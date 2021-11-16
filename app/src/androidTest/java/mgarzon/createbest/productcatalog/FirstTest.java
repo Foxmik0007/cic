@@ -15,6 +15,7 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.CoreMatchers.anything;
@@ -44,13 +45,7 @@ import static org.hamcrest.CoreMatchers.anything;
                     .perform(typeText(mStringToBetyped), closeSoftKeyboard());
             onView(withId(R.id.editTextPrice))
                     .perform(typeText(mNumberToBetyped), closeSoftKeyboard());
-
-            onView(withId(R.id.addButton)).perform(click());
-
-            // Check that the text was changed.
-            //onView(withId(R.id.listViewProducts))
-              //      .check(matches(withText(mStringToBetyped)));
-            onData(anything()).inAdapterView(withId(R.id.listViewProducts)).atPosition(0).onChildView(withId(R.id.textViewName)).check(matches(withText("Hello")));
+            onView(withText("Espresso")).check(matches(isDisplayed()));
 
         }
     }
